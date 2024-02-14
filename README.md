@@ -5,7 +5,7 @@ no graphics yet, just a bunch of blocks punching each other.
 
 ### Base Game Mechanics:
 - [X] Project Set Up
-- [ ] Create Player and Enemy
+- [X] Create Player and Enemy
 - [ ] Attacks
 - [ ] Health Bar
 - [ ] Game Timers and Game Over
