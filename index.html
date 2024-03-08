@@ -1,3 +1,51 @@
-<canvas></canvas>
+<head>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
 
-<script src="index.js"></script>
+        .container {
+            position: relative;
+            display: inline;
+        }
+    
+        .up-bar-container {
+            position: absolute;
+            display: flex;
+            align-items: center;
+            padding: 20px;
+            width: 100%;
+        }
+        .health-bar{
+            background-color: yellow;
+            height: 30px;
+            width: 100%;
+            position: relative;
+            display: flex;
+            justify-content: flex-end;
+        }
+        .timer {
+            background-color: white;
+            width: 100px;
+            height: 100px;
+            flex-shrink: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="up-bar-container">
+            <div class="health-bar">
+                <div id="player-health" style="width: 100%; background-color: red; height: 100%;"></div>
+            </div>
+            <div class="timer">
+
+            </div>
+            <div class="health-bar" style="justify-content: flex-start;">
+                <div id="enemy-health" style="width: 100%; background-color: blue; height: 100%;"></div>
+            </div>
+        </div>
+        <canvas></canvas>
+    </div>
+    <script src="index.js"></script>    
+</body>

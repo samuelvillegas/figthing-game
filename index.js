@@ -11,7 +11,7 @@ const jump_height = 20;
 const speed = 5;
 
 class Sprite{
-    constructor({position, velocity, width, height, color='red', offset}){
+    constructor({position, velocity, width, height, color='red', offset, damage=10}){
         this.position = position;
         this.velocity = velocity;
         this.width = width;
@@ -25,9 +25,11 @@ class Sprite{
             },
             offset,
             width: 100,
-            height: 50
+            height: 50,
+            damage: damage
         }
         this.isAttacking = false;
+        this.health = 100;
     }
 
     draw(){
@@ -85,7 +87,8 @@ const player = new Sprite({
     offset: {
         x: 0,
         y: 0
-    }
+    },
+    damage: 10
 });
 
 const enemy = new Sprite({
@@ -103,7 +106,8 @@ const enemy = new Sprite({
     offset: {
         x: 50,
         y: 0
-    }
+    },
+    damage: 10
 });
 
 const keys = {
@@ -168,7 +172,8 @@ function animate(){
         rectangularCollision(player, enemy) && player.isAttacking
     ){
         player.isAttacking = false;
-        console.log('player hit');
+        enemy.health -= player.attackBox.damage;
+        document.querySelector('#enemy-health').style.width = enemy.health + "%"
     }
 
     // Enemy attack box
@@ -176,7 +181,9 @@ function animate(){
         rectangularCollision(enemy, player) && enemy.isAttacking
     ){
         enemy.isAttacking = false;
-        console.log('enemy hit');
+        player.health -= enemy.attackBox.damage;
+
+        document.querySelector('#player-health').style.width = player.health + "%"
     }
 
 }

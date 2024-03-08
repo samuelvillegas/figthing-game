@@ -8,5 +8,5 @@ no graphics yet, just a bunch of blocks punching each other.
 - [X] Create Player and Enemy
 - [X] Move characters with event listeners
 - [X] Attacks
-- [ ] Health Bar
+- [ ] Health Bar interface
 - [ ] Game Timers and Game Over
