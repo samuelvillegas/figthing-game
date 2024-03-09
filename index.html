@@ -1,12 +1,19 @@
 <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
     <style>
         * {
             box-sizing: border-box;
+            font-family: 'Press Start 2P', cursive;
         }
 
         .container {
             position: relative;
-            display: inline;
+            display: inline-block;
         }
     
         .up-bar-container {
@@ -25,10 +32,29 @@
             justify-content: flex-end;
         }
         .timer {
-            background-color: white;
+            background-color: yellow;
             width: 100px;
             height: 100px;
             flex-shrink: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 3em;
+        }
+        .display-match{
+            background-color: white;
+            color: black;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 20px;
+            font-size: 1.5em;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
         }
     </style>
 </head>
@@ -38,13 +64,12 @@
             <div class="health-bar">
                 <div id="player-health" style="width: 100%; background-color: red; height: 100%;"></div>
             </div>
-            <div class="timer">
-
-            </div>
+            <div class="timer" id="timer"></div>
             <div class="health-bar" style="justify-content: flex-start;">
                 <div id="enemy-health" style="width: 100%; background-color: blue; height: 100%;"></div>
             </div>
         </div>
+        <div class="display-match" id="display_match"></div>
         <canvas></canvas>
     </div>
     <script src="index.js"></script>    

@@ -6,6 +6,9 @@ canvas.height = 576
 
 c.fillRect(0, 0, canvas.width, canvas.height);
 
+var timer = 60
+let timerId
+
 const gravity = 0.7;
 const jump_height = 20;
 const speed = 5;
@@ -137,8 +140,35 @@ function rectangularCollision(rectangle1, rectangle2){
         rectangle1.attackBox.position.x <= rectangle2.position.x + rectangle2.width &&
         rectangle1.attackBox.position.y + rectangle1.attackBox.height >= rectangle2.position.y &&
         rectangle1.attackBox.position.y <= rectangle2.position.y + rectangle2.height
-        ) 
+    ) 
 }
+function decreaseTimer(){
+    if(timer > 0){
+        timerId = setTimeout(decreaseTimer, 1000);
+        timer--;
+        document.querySelector('#timer').innerHTML = timer;
+    }
+
+    if(timer === 0){
+        determineWinner(player, enemy, timerId);
+    }
+}
+
+function determineWinner(player, enemy, timerId){
+    clearTimeout(timerId);
+    if(player.health == enemy.health){
+        document.querySelector('#display_match').innerHTML = "It's a draw";
+        
+    } else if (player.health > enemy.health){
+        document.querySelector('#display_match').innerHTML = "Player 1 wins";
+    }
+    else {
+        document.querySelector('#display_match').innerHTML = "Player 2 wins";
+    }
+    document.querySelector('#display_match').style.display = 'flex';
+}
+
+decreaseTimer();
 
 function animate(){
     window.requestAnimationFrame(animate);
@@ -184,6 +214,11 @@ function animate(){
         player.health -= enemy.attackBox.damage;
 
         document.querySelector('#player-health').style.width = player.health + "%"
+    }
+    
+    // End game based on health
+    if (player.health <= 0 || enemy.health <= 0){
+        determineWinner(player, enemy, timerId);
     }
 
 }
