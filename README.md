@@ -10,3 +10,6 @@ no graphics yet, just a bunch of blocks punching each other.
 - [X] Attacks
 - [X] Health Bar interface
 - [X] Game Timers and Game Over
+
+### Sprites and Animations
+- [X] Background
